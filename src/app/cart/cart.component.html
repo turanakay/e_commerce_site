@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4><b>Shopping Cart</b></h4>
+                    </div>
+                    <div class="col align-self-center text-right text-muted">{{numberOfElements}} items</div>
+                </div>
+            </div>
+            <div *ngFor="let hero of heroes; index as i" class="row border-top border-bottom">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="{{hero.image}}"></div>
+                    <div class="col">
+                        <div class="row text-muted">{{hero.name}}</div>
+                        <div class="row">{{hero.description}}</div>
+                    </div>
+                    <div class="col"> 
+                        <!-- <button class="value-button" (click)= 'decreaseItem(i,hero)'>-</button> -->
+                         {{quantity[i]}}
+                        <button  class="value-button" (click)= 'increaseItem(i,hero)'>+</button> </div>
+                        
+                    <div class="col"> {{hero.price}} 
+                        &#36; X {{quantity[i]}} <button class= 'closebutton'(click) ="deleteitem(hero)">remove</button></div>
+                </div>
+            </div>
+            <div class="back-to-shop"><a href="/home">&#x2190;</a><span class="text-muted">Back to shop</span></div>
+        </div>
+        <div class="col-md-4 summary">
+            <div>
+                <h5><b>Summary</b></h5>
+            </div>
+            <hr>
+            <div class="row">
+                <!-- <div *ngFor="let hero of heroes" class="row border-top border-bottom">
+                    {{sum}} = {{sum}} + {{hero.price}}
+                </div> -->
+                <div class="col" style="padding-left:0;">ITEMS {{numberOfElements}}</div>
+                <div class="col text-right">&#36; {{sum}}</div>
+            </div>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col">TOTAL PRICE</div>
+                <div class="col text-right">&#36; {{sum}}</div>
+            </div> <button (click) = 'goToCheckout()' class="btn">CHECKOUT</button>
+        </div>
+    </div>
+</div>

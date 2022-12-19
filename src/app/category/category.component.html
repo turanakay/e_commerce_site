@@ -1,0 +1,98 @@
+<!-- <div id="search-component">
+    <label for="search-box">Hero Search</label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let hero of heroes$ | async" >
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.name}}
+        </a>
+      </li>
+    </ul>
+  </div> -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- <p class = "searchcattext" style="text-align:'center'" >Couldn't find what you are looking for ? Try our search by category</p> -->
+    <!-- <div class="s003"> -->
+      <!-- <form>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="input-select">
+              <select required data-trigger="" name="choices-single-defaul" [(ngModel)]= 'selectedOption'  >
+                <option [ngValue]="null" hidden>Select one category </option>
+                <option value="" disabled selected hidden>Select a value</option>
+                <option selected= 'true' disabled="disabled" [selected]="true">Chose a category...</option>
+                <option >All</option>
+                <option>tvs</option>
+                <option>computers</option>
+                <option>gaming</option>
+                <option>Men</option>
+                <option>Clothing</option>
+                <option>Footwear</option>
+                <option>Accessories</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-field second-wrap">
+            <input #searchcat id="search" type="text" placeholder="Search products with category!" />
+          </div>
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="button" (click)= 'categoricalSearch(searchcat.value)'>
+              <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form> -->
+    <!-- </div>  -->
+    <p class = "searchcattext" style="text-align:'center'" >'{{numofitems}}' results for '{{term}}'</p>
+  </body>
+  <div class="container">
+    <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header"> 
+        <nav class="navbar navbar-expand-lg navbar-light pl-lg-0 pl-auto"> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation" onclick="chnageIcon()" id="icon"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="mynav">
+                <ul class="navbar-nav d-lg-flex align-items-lg-center">
+                    <li class="nav-item active"><select required data-trigger="" name="choices-single-defaul" [(ngModel)]= 'selectedOptions'  >
+                      <option [ngValue]="null" hidden>Select one category </option>
+                      <option value="" disabled selected hidden>Select a value</option>
+                      <option selected= 'true' disabled="disabled" [selected]="true">Chose a category...</option>
+                      <option value="Price Ascending">Price Ascending</option>
+                      <option value="Price Descending">Price Descending</option>
+                      <option  value="Name Ascending">Name Ascending</option>
+                      <option  value="Name Descending">Name Descending</option>
+                      <option value="Popularity Ascending">Popularity Ascending</option>
+                      <option value="Popularity Descending">Popularity Descending</option>
+                    </select>
+                    <button (click) = 'sortthis(selectedOptions)' class = 'buttonsort'> sort </button>  </li>
+                    <li class="nav-item d-lg-none d-inline-flex"> </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="content" class="my-5">
+        <div  id="products">
+            <div class="row mx-0">
+                <div *ngFor="let hero of category.products" routerLink="/detail/{{hero.id}}" class="col-lg-4 col-md-6 pt-md-4 pt-3">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name text-center">{{hero.name}}</div>
+                        <div class="card-img"> <img src="{{hero.image}}" alt=""> </div>
+                        <br>
+                        <div class="text-muted text-center mt-auto">{{hero.description}}</div>
+                        <div class="card-body pt-5">
+                            <div class="d-flex align-items-center justify-content-center price">
+                                <div class="font-weight-bold">{{hero.price}} &#36;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

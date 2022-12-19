@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header"> 
+        <nav class="navbar navbar-expand-lg navbar-light pl-lg-0 pl-auto"> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation" onclick="chnageIcon()" id="icon"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="mynav">
+                <ul class="navbar-nav d-lg-flex align-items-lg-center">
+                    <li class="nav-item active"> 
+                        <select required data-trigger="" name="choices-single-defaul" [(ngModel)]= 'selectedOption'  >
+                            <option [ngValue]="null" hidden>Select one category </option>
+                            <option value="" disabled selected hidden>Select a value</option>
+                            <option selected= 'true' disabled="disabled" [selected]="true">Chose a category...</option>
+                            <option value="Price Ascending">Price Ascending</option>
+                            <option value="Price Descending">Price Descending</option>
+                            <option  value="Name Ascending">Name Ascending</option>
+                            <option  value="Name Descending">Name Descending</option>
+                            <option value="Popularity Ascending">Popularity Ascending</option>
+                            <option value="Popularity Descending">Popularity Descending</option>
+                          </select>
+                          <button (click) = 'sortthis()' class = 'buttonsort'> sort </button>
+                        <!-- <select (ngModelChange)="sortthis(selectedOption)" required data-trigger="" name="choices-single-defaul" [(ngModel)]= 'selectedOption' name="sort" id="sort">
+                            <option [ngValue]="null" hidden>Select one category </option>
+                            <!-- <option value="" disabled selected hidden>Select a value</option>
+                            <option selected= 'true' disabled="disabled" [selected]="true">Chose a category...</option> -->
+                            <!-- <option value="" hidden selected>Sort by</option> -->
+                           <!-- <option value="" disabled selected hidden>Select a value</option>
+                            <option selected= 'true' disabled="disabled" [selected]="true">Chose a category...</option>
+                            <option value="Price Ascending">Price Ascending</option>
+                            <option value="Price Descending">Price Descending</option>
+                            <option  value="Name Ascending">Name Ascending</option>
+                            <option  value="Name Descending">Name Descending</option>
+                            <option value="Popularity Ascending">Popularity Ascending</option>
+                            <option value="Popularity Descending">Popularity Descending</option>
+                        </select>-->
+                     </li> 
+                    <li class="nav-item d-lg-none d-inline-flex"> </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="content" class="my-5">
+        <div  id="products">
+            <div class="row mx-0">
+                <div *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}" class="col-lg-4 col-md-6 pt-md-4 pt-3">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name text-center">{{hero.name}}</div>
+                        <div class="card-img"> <img src="{{hero.image}}" alt=""> </div>
+                        <br>
+                        <div class="text-muted text-center mt-auto">{{hero.description}}</div>
+                        <div class="card-body pt-5">
+                            <div class="d-flex align-items-center justify-content-center price">
+                                <div class="font-weight-bold">{{hero.price}} 
+                                    &#36;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
